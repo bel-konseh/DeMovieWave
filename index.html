@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>DEMOVIE</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="style.css"/> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+    
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">DEMOVIE</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Movies</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">TV Series</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Genre</a></li>
+        </ul>
+        <form class="d-flex" role="search" id="searchForm">
+          <input class="form-control me-2" type="search" placeholder="Search..." id="searchInput">
+          <button class="btn btn-search" id="searchInputBtn" type="submit"><i class="bi bi-search"></i></button>
+        </form>
+        <button id="toggleModeBtn" class="btn btn-search ms-3" title="Toggle Dark/Light Mode">
+          <i class="bi bi-moon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="container hero-section mt-4" id="heroSection"></section>
+
+  <!-- Filters Section -->
+  <section class="container genre-btns" id="filtersSection"></section>
+
+  <!-- Movies List -->
+  <section class="container" id="moviesSection">
+    <div class="d-flex align-items-center justify-content-between mt-3">
+      <span class="section-title">Movies</span>
+      <a href="#" class="text-warning btn" style="font-weight:700; font-size:14px;">See all <i class="bi bi-chevron-right"></i></a>
+    </div>
+    <h3>Popular Now</h3>
+    <div class=" row gap-2 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4" id="moviesRow">
+        
+        <!-- Movies are injected here -->
+
+    </div>
+  </section>
+
+  <!-- Trends Now -->
+  <aside class="container mt-4">
+    <span class="section-title" style="font-size:17px;">TRENDS NOW</span>
+    <div id="trendsNow"></div>
+  </aside>
+
+
+  <!-- Watchlist -->
+
+  <aside class="container mt-4">
+    <span class="section-title" style="font-size:17px;">WATCHLIST</span>
+    <div id="watchlistNow"></div>
+  </aside>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="footer-logo mb-3"><b>DEMOVIE</b></div>
+        <p>Premium access to the world of movies and TV shows.</p>
+      </div>
+      <div class="col-md-2">
+        <h5>Company</h5>
+        <ul class="list-unstyled">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Premium</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="#">Movies</a></li>
+          <li><a href="#">TV Series</a></li>
+          <li><a href="#">Genre</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h5>Follow Us</h5>
+        <div class="footer-social">
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-twitter"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+        </div>
+      </div>
+      <div class="col-md-2 text-end">
+        <h5>&copy; 2025 DEMOVIE</h5>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Movie Detail Modal -->
+  <div class="modal fade" id="movieDetailModal" tabindex="-1" aria-labelledby="movieDetailLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title" id="movieDetailLabel"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter:invert(1);"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-4">
+            <div class="col-md-6">
+              <img id="modalPoster" src="" style="width:100%;border-radius:14px;">
+              <button class="btn btn-search mt-3 w-100" id="trailerBtn"><i class="bi bi-play-circle"></i> Play Trailer</button>
+              <button class="btn btn-search mt-2 w-100" id="subtitleBtn"><i class="bi bi-subtitles"></i> Toggle Subtitles</button>
+            </div>
+            <div class="col-md-6">
+              <p id="modalOverview" class="mb-2"></p>
+              <div><b>Release Date:</b> <span id="modalRelease"></span></div>
+              <div><b>Rating:</b> <span id="modalRating"></span></div>
+              <div class="mt-3"><b>Actors:</b>
+                <div id="modalActors" class="badge bg-warning text-dark"></div>
+              </div>
+              <button class="btn btn-watchlist mt-4" id="modalWatchlistBtn"><i class="bi bi-plus-circle"></i> Add to Watchlist</button>
+              <div class="mt-4"><b>Similar Movies:</b>
+                <div id="modalSimilar" class="d-flex flex-wrap gap-2 mt-2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="index.js"></script>
+  
+</body>
+</html>
