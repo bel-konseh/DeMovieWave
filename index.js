@@ -1,6 +1,6 @@
 
 
-import TMDB_API_KEY,{ TMDB_ACCESS_TOKEN } from "./config.js";
+import {TMDB_API_KEY, TMDB_ACCESS_TOKEN } from "./config.js";
 
 
 const movieBox = document.getElementById('moviesRow');
@@ -28,12 +28,9 @@ const fetchPopularMovies = async () => {
         res.results.forEach((movie) => {
 
         const movieCard = document.createElement('div');
-        movieCard.classList.add('p-0');
-        movieCard.classList.add('col-md-3');
-        movieCard.classList.add('mx-4');
-        movieCard.classList.add('card');
-        movieCard.classList.add('bg-dark');
-        movieCard.classList.add('text-white');
+        movieCard.classList.add('p-0', 'col-md-3', 'mx-4', 'card', 'bg-dark', 'text-white', 'movie-card');
+        movieCard.style.cursor = 'pointer';
+        movieCard.dataset.movieId = movie.id;
 
         const movieBackdrop = document.createElement('img');
 
@@ -54,8 +51,15 @@ const fetchPopularMovies = async () => {
         })
 
 })
+  .then(() => {
+    // Initialize card click events after movies are loaded
+    setTimeout(() => {
+      if (window.movieDetails) {
+        window.movieDetails.attachCardEventListeners();
+      }
+    }, 100);
+  })
   .catch(err => console.error(err));
-
 
     } catch (error) {
         movieBox.innerHTML = `<h3>failed to load popular movies</h3>`
@@ -106,12 +110,9 @@ const showSearchResults = (data) => {
     searchResults.appendChild(searchHeaderText);
     data.forEach((movie) => {
         const movieCard = document.createElement('div');
-        movieCard.classList.add('p-0');
-        movieCard.classList.add('col-md-3');
-        movieCard.classList.add('mx-4');
-        movieCard.classList.add('card');
-        movieCard.classList.add('bg-dark');
-        movieCard.classList.add('text-white');
+        movieCard.classList.add('p-0', 'col-md-3', 'mx-4', 'card', 'bg-dark', 'text-white', 'movie-card');
+        movieCard.style.cursor = 'pointer';
+        movieCard.dataset.movieId = movie.id;
 
         const movieBackdrop = document.createElement('img');
 
@@ -133,8 +134,15 @@ const showSearchResults = (data) => {
        
     })
 
-        movieSection.appendChild(searchResults);
-        console.log("search results appended");
+       movieSection.appendChild(searchResults);
+console.log("search results appended");
+
+// Initialize card click events for search results
+setTimeout(() => {
+  if (window.movieDetails) {
+    window.movieDetails.attachCardEventListeners();
+  }
+}, 100);
 
 }
 
@@ -142,4 +150,12 @@ searchInputBtn.addEventListener('click', searchMovie)
 
 
 fetchPopularMovies();
+// Initialize card click events after movies are loaded
+const initializeCardEvents = () => {
+    if (window.movieDetails) {
+        window.movieDetails.attachCardEventListeners();
+    }
+};
 
+// Call this after fetchPopularMovies and showSearchResults
+// Modify your existing functions to call this:
