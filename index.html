@@ -22,10 +22,10 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
-          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Movies</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">TV Series</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Genre</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#movies">Movies</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tv">TV Series</a></li>
+          <li class="nav-item"><a class="nav-link" href="#genre">Genre</a></li>
         </ul>
         <form class="d-flex" role="search" id="searchForm">
           <input class="form-control me-2" type="search" placeholder="Search..." id="searchInput">
@@ -39,7 +39,10 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="container hero-section mt-4" id="heroSection"></section>
+  <section class="container hero-section mt-4" id="heroSection">
+    <img src="super-woman-1885016_640.webp" alt="hero image" width="100PX">
+  </section>
+  
 
   <!-- Filters Section -->
   <section class="container genre-btns" id="filtersSection"></section>
@@ -47,8 +50,8 @@
   <!-- Movies List -->
   <section class="container" id="moviesSection">
     <div class="d-flex align-items-center justify-content-between mt-3">
-      <span class="section-title">Movies</span>
-      <a href="#" class="text-warning btn" style="font-weight:700; font-size:14px;">See all <i class="bi bi-chevron-right"></i></a>
+      <span class="section-title" id="movies">Movies</span>
+      <!-- <a href="#" class="text-warning btn" style="font-weight:700; font-size:14px;">See all <i class="bi bi-chevron-right"></i></a> -->
     </div>
     <h3>Popular Now</h3>
     <div class=" row gap-2 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4" id="moviesRow">
