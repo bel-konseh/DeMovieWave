@@ -201,7 +201,7 @@ class MovieDetails {
                     <div class="text-center">
                         <img src="${movie.poster_path ? `https://image.tmdb.org/t/p/w200/${movie.poster_path}` : 'https://via.placeholder.com/200x300?text=No+Image'}" 
                              alt="${movie.title}" 
-                             style="width: 60px; height: 90px; object-fit: cover; border-radius: 4px;">
+                             style="width: 60px; height: 90px; object-fit: cover; border-radius: 4px;display: flex-wrap">
                         <small class="d-block mt-1 text-truncate" style="max-width: 60px;">${movie.title}</small>
                     </div>
                 `;
